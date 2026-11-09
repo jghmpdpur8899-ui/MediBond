@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediBond - Healthcare Platform</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f9ff;color:#173653}
+header{background:#087db5;color:white;padding:18px 15px}
+nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold}
+.hero{text-align:center;padding:35px 18px}
+.hero h1{color:#087db5;font-size:30px}
+.hero p{line-height:1.7}
+.container{max-width:650px;margin:auto;padding:15px}
+.card{background:white;border-radius:14px;padding:22px;margin:15px 0;box-shadow:0 3px 15px #dce9f4}
+h2{font-size:21px;color:#087db5}
+button,.upload{background:#087db5;color:white;padding:13px;border:0;border-radius:9px;cursor:pointer;display:block;text-align:center;width:100%;font-size:16px}
+input,select{width:100%;padding:13px;border:1px solid #cbdbea;border-radius:8px;margin:10px 0}
+.services{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.service{background:#e7f4ff;padding:20px 8px;border-radius:12px;text-align:center}
+footer{text-align:center;padding:25px;color:#567}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div class="logo">💙 MediBond</div>
+<button style="width:auto;background:white;color:#087db5"
+onclick="toggleLanguage()">English / বাংলা</button>
+</nav>
+</header>
+
+<section class="hero">
+<h1 id="heading">আপনার স্বাস্থ্য, আমাদের দায়িত্ব</h1>
+<p id="intro">স্বাস্থ্যসেবা এখন আপনার হাতের মুঠোয়।</p>
+</section>
+
+<main class="container">
+<div class="card">
+<h2 id="uploadTitle">প্রেসক্রিপশন আপলোড করুন</h2>
+<p id="uploadText">আপনার ডাক্তারের প্রেসক্রিপশন নির্বাচন করুন।</p>
+<input type="file" id="prescription" accept=".jpg,.jpeg,.png,.pdf">
+<button onclick="uploadDemo()" id="uploadButton">প্রেসক্রিপশন জমা দিন</button>
+<p id="message"></p>
+</div>
+
+<div class="card">
+<h2 id="servicesTitle">আমাদের সেবাসমূহ</h2>
+<div class="services">
+<div class="service">💊<p id="medicine">ওষুধ অর্ডার</p></div>
+<div class="service">🧪<p id="diagnostic">ডায়াগনস্টিক বুকিং</p></div>
+<div class="service">📋<p id="history">প্রেসক্রিপশন</p></div>
+<div class="service">🏥<p id="partner">পার্টনার কোম্পানি</p></div>
+</div>
+</div>
+</main>
+
+<footer>© 2026 MediBond | Your Health, Our Priority</footer>
+
+<script>
+let english=false;
+
+function toggleLanguage(){
+english=!english;
+document.getElementById('heading').innerText=english?
+"Your Health, Our Priority":"আপনার স্বাস্থ্য, আমাদের দায়িত্ব";
+document.getElementById('intro').innerText=english?
+"Healthcare is now at your fingertips.":"স্বাস্থ্যসেবা এখন আপনার হাতের মুঠোয়।";
+document.getElementById('uploadTitle').innerText=english?
+"Upload Prescription":"প্রেসক্রিপশন আপলোড করুন";
+document.getElementById('uploadText').innerText=english?
+"Choose your doctor's prescription.":"আপনার ডাক্তারের প্রেসক্রিপশন নির্বাচন করুন।";
+document.getElementById('uploadButton').innerText=english?
+"Submit Prescription":"প্রেসক্রিপশন জমা দিন";
+document.getElementById('servicesTitle').innerText=english?
+"Our Services":"আমাদের সেবাসমূহ";
+document.getElementById('medicine').innerText=english?"Medicine Order":"ওষুধ অর্ডার";
+document.getElementById('diagnostic').innerText=english?"Diagnostic Booking":"ডায়াগনস্টিক বুকিং";
+document.getElementById('history').innerText=english?"Prescription":"প্রেসক্রিপশন";
+document.getElementById('partner').innerText=english?"Partner Companies":"পার্টনার কোম্পানি";
+}
+
+function uploadDemo(){
+let file=document.getElementById('prescription').files[0];
+let message=document.getElementById('message');
+if(!file){
+message.innerText="অনুগ্রহ করে একটি ফাইল নির্বাচন করুন।";
+return;
+}
+message.innerText="ডেমো: ফাইল নির্বাচন হয়েছে। সার্ভারে এখনো জমা হয়নি।";
+}
+</script>
+</body>
+</html>
